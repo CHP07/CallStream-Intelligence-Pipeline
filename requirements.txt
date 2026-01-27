@@ -1,0 +1,7 @@
+aio_pika==9.5.8
+aiomysql==0.3.2
+fastapi==0.128.0
+httpx==0.28.1
+locustio==0.999
+pydantic==2.12.5
+SQLAlchemy==2.0.46
