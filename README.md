@@ -60,6 +60,35 @@ To run the performance tests:
     locust -f locustfile.py --host http://localhost:8000
 Visit *http://localhost:8089* to configure the number of users and spawn rate.
 
+
+# 🤖 Call Center Data Analyst (ReAct Agent)
+
+This LangGraph agent uses Google Gemini 2.0 Flash to provide a natural language interface for call center analytics. It interacts with API-3 (Monitoring API) to retrieve and synthesize data insights.
+
+> [!IMPORTANT]
+> The ReAct agent implementation and logic are located within the Agent folder.
+
+## 🌟 Key Features
+- ReAct Architecture: Implements a Reasoning and Acting loop to manage tool execution and data summarization.
+- Parameter Mapping: Automatically maps natural language entities (campaigns, dates, status) into API query parameters.
+- Persistence: Built-in `SqliteSaver` allows the agent to remember conversation context.
+
+## 🛠️ Tech Stack
+- LLM: Google Gemini 2.0 Flash
+- Framework: [LangGraph](https://langchain-ai.github.io)
+- Networking: `httpx` (Asynchronous)
+- Persistence: `langgraph-checkpoint-sqlite`
+
+## 🚀 Quick Start
+1. Install: `pip install langchain-google-genai langgraph-checkpoint-sqlite`
+2. Configure: Add `GEMINI_API_KEY` to your secrets and update the `Base URL` in the prompt to your API-3 tunnel address.
+3. Run: Use the `graph.stream()` loop to interact with the analyst.
+
+## 📊 Example
+**User:** "How many calls did we miss in the Sales campaign?"
+**Agent:** (Reasoning → Tool Call → Observation) "There were 12 missed calls for the Sales campaign according to the latest records."
+
+
 ## 📝 API Endpoints
 - POST `/api/receive` : Main entry point for call data.
 
