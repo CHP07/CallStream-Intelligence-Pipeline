@@ -42,18 +42,18 @@ The system is split into three main components:
 4. **Running the Services:**
   - Option A: Direct Storage (Standard)
     ```bash
-    uvicorn api_1:app --port 8000
-    uvicorn api_2:app --port 8001
+    uvicorn api_1:app --port 8000 --reload
+    uvicorn api_2:app --port 8001 --reload
   - Option B: Scalable Queue Storage (Recommended)
     ```bash
     # Start the services
-    uvicorn api_1:app --port 8000
-    uvicorn api_2_mq:app --port 8001
+    uvicorn api_1:app --port 8000 --reload
+    uvicorn api-2_mq:app --port 8001 --reload
     # Start the background worker
     python worker.py
 5. **Monitoring:**
     ```bash
-    uvicorn api_3:app --port 8002
+    uvicorn api_3:app --port 8002 --reload
 - 🧪 Load Testing
 To run the performance tests:
     ```bash
